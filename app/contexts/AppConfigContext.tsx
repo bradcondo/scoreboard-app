@@ -119,9 +119,6 @@ const useWindowDimensions = (): ScaledSize => {
     };
 
     Dimensions.addEventListener("change", __handleChange);
-    return () => {
-      Dimensions.removeEventListener("change", __handleChange);
-    };
   }, [dimensions]);
 
   return dimensions;
@@ -138,9 +135,6 @@ const useAppState = (): AppStateStatus => {
     };
 
     AppState.addEventListener("change", __handleChange);
-    return () => {
-      AppState.removeEventListener("change", __handleChange);
-    };
   }, [appState]);
 
   return appState;
