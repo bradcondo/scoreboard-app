@@ -1,31 +1,31 @@
-import React, {useEffect} from 'react';
-import {Text, TouchableHighlight, View} from 'react-native';
-import {RouteProp} from '@react-navigation/native';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {compact, isNil} from 'lodash';
+import React, { useEffect } from "react";
+import { Text, TouchableHighlight, View } from "react-native";
+import { RouteProp } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { compact, isNil } from "lodash";
 
-import {useOuting} from '@contexts/OutingContext';
-import {StackParamList} from '@navigators/PlayNavigator';
-import OutingGroup from '@models/OutingGroup';
-import OutingRound from '@models/OutingRound';
+import { useOuting } from "@/contexts/OutingContext";
+import { StackParamList } from "@/navigators/PlayNavigator";
+import OutingGroup from "@/models/OutingGroup";
+import OutingRound from "@/models/OutingRound";
 
-import style from './style';
-import {useAppConfig} from '@contexts/AppConfigContext';
+import style from "./style";
+import { useAppConfig } from "@/contexts/AppConfigContext";
 
-type NavigationType = StackNavigationProp<StackParamList, 'SelectGroup'>;
-type Route = RouteProp<StackParamList, 'SelectGroup'>;
+type NavigationType = StackNavigationProp<StackParamList, "SelectGroup">;
+type Route = RouteProp<StackParamList, "SelectGroup">;
 export interface Props {
   navigation: NavigationType;
   route: Route;
 }
 
-const SelectGroupScreen: React.FC<Props> = ({navigation, route}: Props) => {
-  const {player} = useAppConfig();
-  const {outingPlayers} = useOuting();
+const SelectGroupScreen: React.FC<Props> = ({ navigation, route }: Props) => {
+  const { player } = useAppConfig();
+  const { outingPlayers } = useOuting();
   const outingRound = OutingRound.parse(route.params.outingRound);
 
   const selectGroupHandler = (selectedOutingGroup: OutingGroup) => {
-    navigation.navigate('Scores', {
+    navigation.navigate("Scores", {
       outingRound: outingRound.dump(),
       outingGroup: selectedOutingGroup.dump(),
     });
@@ -68,7 +68,7 @@ const OutingGroupButton = ({
   outingGroup: OutingGroup;
   selectGroupHandler: (outingGroup: OutingGroup) => void;
 }) => {
-  const {outingPlayers} = useOuting();
+  const { outingPlayers } = useOuting();
 
   const players = compact(
     outingGroup.players.map((x) => {
@@ -84,9 +84,10 @@ const OutingGroupButton = ({
   return (
     <TouchableHighlight
       style={style.button}
-      onPress={() => selectGroupHandler(outingGroup)}>
+      onPress={() => selectGroupHandler(outingGroup)}
+    >
       <Text style={style.buttonText}>
-        {outingGroup.number} - {players.map((x) => x.nickname).join(', ')}
+        {outingGroup.number} - {players.map((x) => x.nickname).join(", ")}
       </Text>
     </TouchableHighlight>
   );

@@ -1,4 +1,4 @@
-import {get} from 'lodash';
+import { get } from "lodash";
 
 class OutingGroupPlayer {
   constructor(
@@ -9,9 +9,9 @@ class OutingGroupPlayer {
 
   public static parse(input: object): OutingGroupPlayer {
     return new OutingGroupPlayer(
-      get(input, 'id'),
-      get(input, 'outing_group_id'),
-      get(input, 'player_id'),
+      get(input, "id"),
+      get(input, "outing_group_id"),
+      get(input, "player_id"),
     );
   }
 

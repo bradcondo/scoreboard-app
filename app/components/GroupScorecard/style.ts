@@ -1,10 +1,10 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from "react-native";
 
-import colors from '@styles/colors';
+import colors from "@/styles/colors";
 
 const style = StyleSheet.create({
   container: {
-    flexDirection: 'column',
+    flexDirection: "column",
   },
   table: {
     margin: 5,
@@ -12,7 +12,7 @@ const style = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.darkGray,
     borderRadius: 5,
-    flexDirection: 'column',
+    flexDirection: "column",
   },
   row: {
     flex: 1,
@@ -20,7 +20,7 @@ const style = StyleSheet.create({
     borderBottomColor: colors.lightGray,
     backgroundColor: colors.transparent,
     height: 35,
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   headerRow: {
     backgroundColor: colors.darkRed,
@@ -49,10 +49,10 @@ const style = StyleSheet.create({
     borderRightColor: colors.lightGray,
     width: 60,
     height: 35,
-    position: 'relative',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+    position: "relative",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
   },
   headerCell: {
     height: 30,
@@ -83,25 +83,25 @@ const style = StyleSheet.create({
   },
   scoreCell: {
     width: 27,
-    position: 'relative',
+    position: "relative",
   },
   cellText: {
     fontSize: 12,
     color: colors.black,
-    fontWeight: '700',
+    fontWeight: "700",
   },
   headerCellText: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     color: colors.white,
     fontSize: 14,
   },
   parCellText: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     color: colors.white,
     fontSize: 11,
   },
   handicapCellText: {
-    fontWeight: 'normal',
+    fontWeight: "normal",
     color: colors.black,
     fontSize: 10,
   },
@@ -111,7 +111,7 @@ const style = StyleSheet.create({
   },
   teamCellText: {
     fontSize: 11,
-    fontWeight: '700',
+    fontWeight: "700",
   },
   cellName: {
     flex: 1,
@@ -120,9 +120,9 @@ const style = StyleSheet.create({
     borderBottomColor: colors.gray,
     borderRightWidth: 1,
     borderRightColor: colors.gray,
-    justifyContent: 'flex-start',
+    justifyContent: "flex-start",
     paddingLeft: 10,
-    position: 'relative',
+    position: "relative",
   },
   headerCellName: {
     backgroundColor: colors.darkRed,
@@ -144,11 +144,11 @@ const style = StyleSheet.create({
     borderRightWidth: 0,
   },
   handicap: {
-    position: 'absolute',
+    position: "absolute",
     top: 2,
     right: 3,
     fontSize: 9,
-    fontWeight: '400',
+    fontWeight: "400",
     color: colors.darkGray,
   },
 });

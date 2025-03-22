@@ -1,33 +1,33 @@
-import React from 'react';
-import {View} from 'react-native';
+import React from "react";
+import { View } from "react-native";
 import {
   createStackNavigator,
   StackNavigationProp,
-} from '@react-navigation/stack';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import {isNil} from 'lodash';
+} from "@react-navigation/stack";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import { isNil } from "lodash";
 
-import {useOuting} from '@contexts/OutingContext';
-import SelectRoundScreen from '@screens/RoundsSelectRoundScreen';
-import ScorecardsScreen from '@screens/RoundsScorecardsScreen';
+import { useOuting } from "@/contexts/OutingContext";
+import SelectRoundScreen from "@/screens/RoundsSelectRoundScreen";
+import ScorecardsScreen from "@/screens/RoundsScorecardsScreen";
 
-import layout from '@styles/layout';
-import colors from '@styles/colors';
+import layout from "@/styles/layout";
+import colors from "@/styles/colors";
 
 export type StackParamList = {
   SelectRound: undefined;
-  Scorecards: {outingRound: object};
+  Scorecards: { outingRound: object };
 };
 
 const Stack = createStackNavigator();
 
-type NavigationType = StackNavigationProp<StackParamList, 'SelectRound'>;
+type NavigationType = StackNavigationProp<StackParamList, "SelectRound">;
 export interface Props {
   navigation: NavigationType;
 }
 
 const RoundsNavigator = ({}: Props) => {
-  const {outing, refreshOuting} = useOuting();
+  const { outing, refreshOuting } = useOuting();
 
   if (isNil(outing)) {
     return null;
@@ -49,7 +49,8 @@ const RoundsNavigator = ({}: Props) => {
             />
           </View>
         ),
-      }}>
+      }}
+    >
       <Stack.Screen name="SelectRound" component={SelectRoundScreen} />
       <Stack.Screen name="Scorecards" component={ScorecardsScreen} />
     </Stack.Navigator>

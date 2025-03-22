@@ -1,20 +1,20 @@
-import {isNil} from 'lodash';
-import React from 'react';
-import {Text, View} from 'react-native';
-import {useAppConfig} from '../../contexts/AppConfigContext';
+import { isNil } from "lodash";
+import React from "react";
+import { Text, View } from "react-native";
 
-import Scorecard from '../../models/Scorecard';
-import ScorecardPlayer from '../../models/ScorecardPlayer';
-import HandicapBubbles from '../HandicapBubbles';
-import Score from '../Score';
-import ToPar from '../ToPar';
+import { useAppConfig } from "@/contexts/AppConfigContext";
+import Scorecard from "@/models/Scorecard";
+import ScorecardPlayer from "@/models/ScorecardPlayer";
+import HandicapBubbles from "@/components/HandicapBubbles";
+import Score from "@/components/Score";
+import ToPar from "@/components/ToPar";
 
-import style from './style';
+import style from "./style";
 
-const GroupScorecard = ({scorecard}: {scorecard: Scorecard}) => {
-  const {orientation} = useAppConfig();
+const GroupScorecard = ({ scorecard }: { scorecard: Scorecard }) => {
+  const { orientation } = useAppConfig();
 
-  const fullScorecard = orientation === 'horizontal';
+  const fullScorecard = orientation === "horizontal";
 
   return (
     <View style={style.container}>
@@ -47,14 +47,15 @@ const HeaderRow = ({
   fullScorecard?: boolean;
 }) => {
   return (
-    <View style={{...style.row, ...style.headerRow}}>
+    <View style={{ ...style.row, ...style.headerRow }}>
       <View
         style={{
           ...style.cell,
           ...style.headerCell,
           ...style.cellName,
           ...style.headerCellName,
-        }}>
+        }}
+      >
         <Text style={style.headerCellText}>Hole</Text>
       </View>
       {fullScorecard &&
@@ -65,7 +66,8 @@ const HeaderRow = ({
               ...style.cell,
               ...style.headerCell,
               ...style.scoreCell,
-            }}>
+            }}
+          >
             <Text style={style.headerCellText}>{hole.number}</Text>
           </View>
         ))}
@@ -73,7 +75,8 @@ const HeaderRow = ({
         style={{
           ...style.cell,
           ...style.headerCell,
-        }}>
+        }}
+      >
         <Text style={style.headerCellText}>Front</Text>
       </View>
       {fullScorecard &&
@@ -84,7 +87,8 @@ const HeaderRow = ({
               ...style.cell,
               ...style.headerCell,
               ...style.scoreCell,
-            }}>
+            }}
+          >
             <Text style={style.headerCellText}>{hole.number}</Text>
           </View>
         ))}
@@ -92,7 +96,8 @@ const HeaderRow = ({
         style={{
           ...style.cell,
           ...style.headerCell,
-        }}>
+        }}
+      >
         <Text style={style.headerCellText}>Back</Text>
       </View>
       <View
@@ -100,7 +105,8 @@ const HeaderRow = ({
           ...style.cell,
           ...style.headerCell,
           ...style.lastCell,
-        }}>
+        }}
+      >
         <Text style={style.headerCellText}>Total</Text>
       </View>
     </View>
@@ -115,14 +121,15 @@ const ParRow = ({
   fullScorecard?: boolean;
 }) => {
   return (
-    <View style={{...style.row, ...style.parRow}}>
+    <View style={{ ...style.row, ...style.parRow }}>
       <View
         style={{
           ...style.cell,
           ...style.cellName,
           ...style.parCell,
           ...style.parCellName,
-        }}>
+        }}
+      >
         <Text style={style.parCellText}>Par</Text>
       </View>
       {fullScorecard &&
@@ -133,7 +140,8 @@ const ParRow = ({
               ...style.cell,
               ...style.parCell,
               ...style.scoreCell,
-            }}>
+            }}
+          >
             <Text style={style.parCellText}>{hole.par}</Text>
           </View>
         ))}
@@ -141,7 +149,8 @@ const ParRow = ({
         style={{
           ...style.cell,
           ...style.parCell,
-        }}>
+        }}
+      >
         <Text style={style.parCellText}>{scorecard.frontPar()}</Text>
       </View>
       {fullScorecard &&
@@ -152,7 +161,8 @@ const ParRow = ({
               ...style.cell,
               ...style.parCell,
               ...style.scoreCell,
-            }}>
+            }}
+          >
             <Text style={style.parCellText}>{hole.par}</Text>
           </View>
         ))}
@@ -160,7 +170,8 @@ const ParRow = ({
         style={{
           ...style.cell,
           ...style.parCell,
-        }}>
+        }}
+      >
         <Text style={style.parCellText}>{scorecard.backPar()}</Text>
       </View>
       <View
@@ -168,7 +179,8 @@ const ParRow = ({
           ...style.cell,
           ...style.parCell,
           ...style.lastCell,
-        }}>
+        }}
+      >
         <Text style={style.parCellText}>{scorecard.totalPar()}</Text>
       </View>
     </View>
@@ -183,14 +195,15 @@ const HandicapRow = ({
   fullScorecard?: boolean;
 }) => {
   return (
-    <View style={{...style.row, ...style.handicapRow}}>
+    <View style={{ ...style.row, ...style.handicapRow }}>
       <View
         style={{
           ...style.cell,
           ...style.cellName,
           ...style.handicapCell,
           ...style.handicapCellName,
-        }}>
+        }}
+      >
         <Text style={style.handicapCellText}>Handicap</Text>
       </View>
       {fullScorecard &&
@@ -201,7 +214,8 @@ const HandicapRow = ({
               ...style.cell,
               ...style.handicapCell,
               ...style.scoreCell,
-            }}>
+            }}
+          >
             <Text style={style.handicapCellText}>{hole.handicap}</Text>
           </View>
         ))}
@@ -219,7 +233,8 @@ const HandicapRow = ({
               ...style.cell,
               ...style.handicapCell,
               ...style.scoreCell,
-            }}>
+            }}
+          >
             <Text style={style.handicapCellText}>{hole.handicap}</Text>
           </View>
         ))}
@@ -258,12 +273,14 @@ const PlayerRow = ({
           ...style.cell,
           ...style.cellName,
           borderBottomWidth: last ? 1 : 0,
-        }}>
+        }}
+      >
         <Text
           style={{
             ...style.cellText,
             ...style.nameText,
-          }}>
+          }}
+        >
           {fullScorecard
             ? player.nickname
             : `${player.firstName} ${player.lastName}`}
@@ -277,7 +294,8 @@ const PlayerRow = ({
           return (
             <View
               key={`player-score-${player.id}-hole-${hole.id}`}
-              style={{...style.cell, ...style.scoreCell}}>
+              style={{ ...style.cell, ...style.scoreCell }}
+            >
               <Score
                 score={!isNil(score) ? score.score : undefined}
                 par={hole.par}
@@ -289,7 +307,7 @@ const PlayerRow = ({
             </View>
           );
         })}
-      <View style={{...style.cell, ...style.totalCell}}>
+      <View style={{ ...style.cell, ...style.totalCell }}>
         <Text style={style.cellText}>{player.round.frontScore}</Text>
         <ToPar toPar={player.round.frontToPar} gray={false} />
       </View>
@@ -300,7 +318,8 @@ const PlayerRow = ({
           return (
             <View
               key={`player-score-${player.id}-hole-${hole.id}`}
-              style={{...style.cell, ...style.scoreCell}}>
+              style={{ ...style.cell, ...style.scoreCell }}
+            >
               <Score
                 score={!isNil(score) ? score.score : undefined}
                 par={hole.par}
@@ -312,11 +331,11 @@ const PlayerRow = ({
             </View>
           );
         })}
-      <View style={{...style.cell, ...style.totalCell}}>
+      <View style={{ ...style.cell, ...style.totalCell }}>
         <Text style={style.cellText}>{player.round.backScore}</Text>
         <ToPar toPar={player.round.backToPar} gray={false} />
       </View>
-      <View style={{...style.cell, ...style.totalCell, ...style.lastCell}}>
+      <View style={{ ...style.cell, ...style.totalCell, ...style.lastCell }}>
         <Text style={style.cellText}>{player.round.score}</Text>
         <ToPar toPar={player.round.toPar} gray={false} />
       </View>
@@ -332,7 +351,7 @@ const TeamRow = ({
   fullScorecard: boolean;
 }) => {
   return (
-    <View style={{...style.row, ...style.teamRow}}>
+    <View style={{ ...style.row, ...style.teamRow }}>
       <View
         style={{
           ...style.cell,
@@ -349,7 +368,8 @@ const TeamRow = ({
               ...style.cell,
               ...style.teamCell,
               ...style.scoreCell,
-            }}>
+            }}
+          >
             <ToPar
               toPar={scorecard.teamScore.netToPars[index]}
               marginLeft={0}
@@ -360,7 +380,8 @@ const TeamRow = ({
         style={{
           ...style.cell,
           ...style.teamCell,
-        }}>
+        }}
+      >
         <ToPar toPar={scorecard.teamScore.frontNetToPar} marginLeft={0} />
       </View>
       {fullScorecard &&
@@ -371,7 +392,8 @@ const TeamRow = ({
               ...style.cell,
               ...style.teamCell,
               ...style.scoreCell,
-            }}>
+            }}
+          >
             <ToPar
               toPar={scorecard.teamScore.netToPars[index + 9]}
               marginLeft={0}
@@ -382,7 +404,8 @@ const TeamRow = ({
         style={{
           ...style.cell,
           ...style.teamCell,
-        }}>
+        }}
+      >
         <ToPar toPar={scorecard.teamScore.backNetToPar} marginLeft={0} />
       </View>
       <View
@@ -390,7 +413,8 @@ const TeamRow = ({
           ...style.cell,
           ...style.teamCell,
           ...style.lastCell,
-        }}>
+        }}
+      >
         <ToPar toPar={scorecard.teamScore.totalNetToPar} marginLeft={0} />
       </View>
     </View>

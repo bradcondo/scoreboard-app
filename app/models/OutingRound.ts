@@ -1,7 +1,7 @@
-import {get, isNil} from 'lodash';
+import { get, isNil } from "lodash";
 
-import Course from '@models/Course';
-import OutingGroup from '@models/OutingGroup';
+import Course from "@/models/Course";
+import OutingGroup from "@/models/OutingGroup";
 
 class OutingRound {
   constructor(
@@ -14,16 +14,16 @@ class OutingRound {
   ) {}
 
   public static parse(input: object): OutingRound {
-    const teeTimeString = get(input, 'tee_time');
+    const teeTimeString = get(input, "tee_time");
     const teeTime = !isNil(teeTimeString) ? new Date(teeTimeString) : undefined;
 
     return new OutingRound(
-      get(input, 'id'),
-      get(input, 'outing_id'),
-      get(input, 'course_id'),
-      Course.parse(get(input, 'course')),
+      get(input, "id"),
+      get(input, "outing_id"),
+      get(input, "course_id"),
+      Course.parse(get(input, "course")),
       teeTime,
-      OutingGroup.parseList(get(input, 'outing_groups', [])),
+      OutingGroup.parseList(get(input, "outing_groups", [])),
     );
   }
 

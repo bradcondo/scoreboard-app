@@ -1,14 +1,14 @@
 import { get, isNil } from "lodash";
 
-import LeaderboardRow from "@models/LeaderboardRow";
-import Player from "@models/Player";
-import Skins from "@models/Skins";
-import Scorecard from "@models/Scorecard";
-import Outing from "@models/Outing";
-import OutingRound from "@models/OutingRound";
-import OutingGroup from "@models/OutingGroup";
-import OutingGroupPlayer from "@models/OutingGroupPlayer";
-import OutingPlayer from "@models/OutingPlayer";
+import LeaderboardRow from "@/models/LeaderboardRow";
+import Player from "@/models/Player";
+import Skins from "@/models/Skins";
+import Scorecard from "@/models/Scorecard";
+import Outing from "@/models/Outing";
+import OutingRound from "@/models/OutingRound";
+import OutingGroup from "@/models/OutingGroup";
+import OutingGroupPlayer from "@/models/OutingGroupPlayer";
+import OutingPlayer from "@/models/OutingPlayer";
 
 class Api {
   static BASE_URL = __DEV__

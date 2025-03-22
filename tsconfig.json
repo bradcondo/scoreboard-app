@@ -3,15 +3,7 @@
   "compilerOptions": {
     "strict": true,
     "paths": {
-      "@components/*": ["./app/components/*"],
-      "@contexts/*": ["./app/contexts/*"],
-      "@hooks/*": ["./app/hooks/*"],
-      "@models/*": ["./app/models/*"],
-      "@navigators/*": ["./app/navigators/*"],
-      "@screens/*": ["./app/screens/*"],
-      "@services/*": ["./app/services/*"],
-      "@styles/*": ["./app/styles/*"],
-      "@utils/*": ["./app/utils/*"]
+      "@/*": ["./app/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]

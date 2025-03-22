@@ -1,5 +1,5 @@
-import {get, isNil} from 'lodash';
-import OutingGroupPlayer from './OutingGroupPlayer';
+import { get, isNil } from "lodash";
+import OutingGroupPlayer from "./OutingGroupPlayer";
 
 class OutingGroup {
   constructor(
@@ -15,10 +15,10 @@ class OutingGroup {
 
   public static parse(input: object): OutingGroup {
     return new OutingGroup(
-      get(input, 'id'),
-      get(input, 'outing_round_id'),
-      get(input, 'number'),
-      OutingGroupPlayer.parseList(get(input, 'outing_group_players', [])),
+      get(input, "id"),
+      get(input, "outing_round_id"),
+      get(input, "number"),
+      OutingGroupPlayer.parseList(get(input, "outing_group_players", [])),
     );
   }
 

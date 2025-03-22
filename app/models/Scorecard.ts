@@ -1,8 +1,8 @@
-import {get} from 'lodash';
+import { get } from "lodash";
 
-import ScorecardHole from '@models/ScorecardHole';
-import ScorecardPlayer from '@models/ScorecardPlayer';
-import TeamScore from '@models/TeamScore';
+import ScorecardHole from "@/models/ScorecardHole";
+import ScorecardPlayer from "@/models/ScorecardPlayer";
+import TeamScore from "@/models/TeamScore";
 
 class Scorecard {
   constructor(
@@ -13,9 +13,9 @@ class Scorecard {
 
   public static parse(input: object): Scorecard {
     return new Scorecard(
-      ScorecardHole.parseList(get(input, 'holes', [])),
-      ScorecardPlayer.parseList(get(input, 'players', [])),
-      TeamScore.parse(get(input, 'team', {})),
+      ScorecardHole.parseList(get(input, "holes", [])),
+      ScorecardPlayer.parseList(get(input, "players", [])),
+      TeamScore.parse(get(input, "team", {})),
     );
   }
 

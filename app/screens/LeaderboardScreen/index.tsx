@@ -1,29 +1,29 @@
-import React, {useEffect, useState} from 'react';
-import {Text, TextStyle, View, ScrollView} from 'react-native';
-import {isNil} from 'lodash';
-import {StackNavigationProp} from '@react-navigation/stack';
+import React, { useEffect, useState } from "react";
+import { Text, TextStyle, View, ScrollView } from "react-native";
+import { isNil } from "lodash";
+import { StackNavigationProp } from "@react-navigation/stack";
 
-import Api from '@services/Api';
-import {useOuting} from '@contexts/OutingContext';
-import LeaderboardRow from '@models/LeaderboardRow';
-import {toOrdinal} from '@utils/ordinal';
-import {useAppConfig} from '@contexts/AppConfigContext';
-import ToPar from '@components/ToPar';
-import {StackParamList} from '@navigators/LeaderboardNavigator';
+import Api from "@/services/Api";
+import { useOuting } from "@/contexts/OutingContext";
+import LeaderboardRow from "@/models/LeaderboardRow";
+import { toOrdinal } from "@/utils/ordinal";
+import { useAppConfig } from "@/contexts/AppConfigContext";
+import ToPar from "@/components/ToPar";
+import { StackParamList } from "@/navigators/LeaderboardNavigator";
 
-import layout from '@styles/layout';
-import colors from '@styles/colors';
-import style from './style';
+import layout from "@/styles/layout";
+import colors from "@/styles/colors";
+import style from "./style";
 
-type NavigationType = StackNavigationProp<StackParamList, 'Leaderboard'>;
+type NavigationType = StackNavigationProp<StackParamList, "Leaderboard">;
 export interface Props {
   navigation: NavigationType;
 }
 
 const LeaderboardScreen: React.FC<Props> = ({}: Props) => {
-  const {outing, outingRounds} = useOuting();
+  const { outing, outingRounds } = useOuting();
   const [leaderboard, setLeaderboard] = useState<LeaderboardRow[]>();
-  const {orientation} = useAppConfig();
+  const { orientation } = useAppConfig();
 
   useEffect(() => {
     if (!isNil(outing)) {
@@ -38,17 +38,18 @@ const LeaderboardScreen: React.FC<Props> = ({}: Props) => {
   }
 
   return (
-    <View style={{...layout.container, ...style.container}}>
+    <View style={{ ...layout.container, ...style.container }}>
       <ScrollView>
         <View style={style.table}>
-          <View style={{...style.row, ...style.headerRow}}>
+          <View style={{ ...style.row, ...style.headerRow }}>
             <View
               style={{
                 ...style.cell,
                 ...style.headerCell,
                 ...style.cellName,
                 ...style.headerCellName,
-              }}>
+              }}
+            >
               <Text style={style.headerRowText}>Player</Text>
             </View>
             {outingRounds.map((outingRound, index) => (
@@ -58,7 +59,8 @@ const LeaderboardScreen: React.FC<Props> = ({}: Props) => {
                   ...style.cell,
                   ...style.headerCell,
                   ...style.cellRound,
-                }}>
+                }}
+              >
                 <Text style={style.headerRowText}>R{index + 1}</Text>
               </View>
             ))}
@@ -68,17 +70,19 @@ const LeaderboardScreen: React.FC<Props> = ({}: Props) => {
                 ...style.headerCell,
                 ...style.cellTotal,
                 ...style.headerCellTotal,
-              }}>
+              }}
+            >
               <Text style={style.headerRowText}>Total</Text>
             </View>
-            {orientation === 'horizontal' && (
+            {orientation === "horizontal" && (
               <>
                 <View
                   style={{
                     ...style.cell,
                     ...style.headerCell,
                     ...style.cellStat,
-                  }}>
+                  }}
+                >
                   <Text style={style.headerRowText}>B</Text>
                 </View>
                 <View
@@ -86,7 +90,8 @@ const LeaderboardScreen: React.FC<Props> = ({}: Props) => {
                     ...style.cell,
                     ...style.headerCell,
                     ...style.cellStat,
-                  }}>
+                  }}
+                >
                   <Text style={style.headerRowText}>E</Text>
                 </View>
               </>
@@ -113,8 +118,8 @@ const LeaderboardTableRow = ({
   row: LeaderboardRow;
   position: number;
 }) => {
-  const {orientation} = useAppConfig();
-  const {outingRounds} = useOuting();
+  const { orientation } = useAppConfig();
+  const { outingRounds } = useOuting();
 
   return (
     <View style={style.row}>
@@ -148,7 +153,7 @@ const LeaderboardTableRow = ({
         netToPar={row.netToPar}
       />
 
-      {orientation === 'horizontal' && (
+      {orientation === "horizontal" && (
         <>
           <StatCell stat={row.birdies} />
           <StatCell stat={row.eagles} />
@@ -168,10 +173,10 @@ const NameCell = ({
   handicap: number;
 }) => {
   return (
-    <View style={{...style.cell, ...style.cellName}}>
+    <View style={{ ...style.cell, ...style.cellName }}>
       <Text style={style.position}>{toOrdinal(position)}</Text>
       <Text style={style.handicap}>{handicap}</Text>
-      <Text style={{...style.nameText, ...style.highlightText}}>{name}</Text>
+      <Text style={{ ...style.nameText, ...style.highlightText }}>{name}</Text>
     </View>
   );
 };
@@ -189,20 +194,21 @@ const RoundCell = ({
   netToPar: number | undefined;
   highest: boolean | undefined;
 }) => {
-  const backgroundColor = highest ? colors.lightGray : 'transparent';
+  const backgroundColor = highest ? colors.lightGray : "transparent";
   const color = highest ? colors.darkGray : style.highlightText.color;
-  const textDecorationLine: TextStyle['textDecorationLine'] = highest
-    ? 'line-through'
-    : 'none';
+  const textDecorationLine: TextStyle["textDecorationLine"] = highest
+    ? "line-through"
+    : "none";
 
   return (
-    <View style={{...style.cell, ...style.cellRound, backgroundColor}}>
+    <View style={{ ...style.cell, ...style.cellRound, backgroundColor }}>
       <View style={style.cellTop}>
         <Text
           style={{
             ...style.cellText,
             textDecorationLine,
-          }}>
+          }}
+        >
           {score}
         </Text>
         <ToPar toPar={toPar} gray={true} />
@@ -213,7 +219,8 @@ const RoundCell = ({
             ...style.cellText,
             color,
             textDecorationLine,
-          }}>
+          }}
+        >
           {netScore}
         </Text>
         <ToPar toPar={netToPar} gray={highest} />
@@ -234,13 +241,13 @@ const TotalCell = ({
   netToPar: number;
 }) => {
   return (
-    <View style={{...style.cell, ...style.cellTotal}}>
-      <View style={{...style.cellTop, ...style.cellTopTotal}}>
+    <View style={{ ...style.cell, ...style.cellTotal }}>
+      <View style={{ ...style.cellTop, ...style.cellTopTotal }}>
         <Text style={style.cellText}>{score}</Text>
         <ToPar toPar={toPar} gray={true} />
       </View>
       <View style={style.cellBottom}>
-        <Text style={{...style.cellText, ...style.highlightText}}>
+        <Text style={{ ...style.cellText, ...style.highlightText }}>
           {netScore}
         </Text>
         <ToPar toPar={netToPar} gray={false} />
@@ -249,10 +256,10 @@ const TotalCell = ({
   );
 };
 
-const StatCell = ({stat}: {stat: number}) => {
+const StatCell = ({ stat }: { stat: number }) => {
   return (
-    <View style={{...style.cell, ...style.cellStat}}>
-      <Text style={{...style.cellText, ...style.highlightText}}>{stat}</Text>
+    <View style={{ ...style.cell, ...style.cellStat }}>
+      <Text style={{ ...style.cellText, ...style.highlightText }}>{stat}</Text>
     </View>
   );
 };

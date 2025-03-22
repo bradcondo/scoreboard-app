@@ -1,35 +1,35 @@
-import React from 'react';
-import {View} from 'react-native';
+import React from "react";
+import { View } from "react-native";
 import {
   createStackNavigator,
   StackNavigationProp,
-} from '@react-navigation/stack';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import {isNil} from 'lodash';
+} from "@react-navigation/stack";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import { isNil } from "lodash";
 
-import {useOuting} from '@contexts/OutingContext';
-import SelectRoundScreen from '@screens/PlaySelectRoundScreen';
-import SelectGroupScreen from '@screens/PlaySelectGroupScreen';
-import ScoresScreen from '@screens/PlayScoresScreen';
+import { useOuting } from "@/contexts/OutingContext";
+import SelectRoundScreen from "@/screens/PlaySelectRoundScreen";
+import SelectGroupScreen from "@/screens/PlaySelectGroupScreen";
+import ScoresScreen from "@/screens/PlayScoresScreen";
 
-import layout from '@styles/layout';
-import colors from '@styles/colors';
+import layout from "@/styles/layout";
+import colors from "@/styles/colors";
 
 export type StackParamList = {
   SelectRound: undefined;
-  SelectGroup: {outingRound: object};
-  Scores: {outingRound: object; outingGroup: object};
+  SelectGroup: { outingRound: object };
+  Scores: { outingRound: object; outingGroup: object };
 };
 
 const Stack = createStackNavigator();
 
-type NavigationType = StackNavigationProp<StackParamList, 'SelectRound'>;
+type NavigationType = StackNavigationProp<StackParamList, "SelectRound">;
 export interface Props {
   navigation: NavigationType;
 }
 
 const PlayNavigator = ({}: Props) => {
-  const {outing, refreshOuting} = useOuting();
+  const { outing, refreshOuting } = useOuting();
 
   if (isNil(outing)) {
     return null;
@@ -37,7 +37,7 @@ const PlayNavigator = ({}: Props) => {
 
   return (
     <Stack.Navigator
-      initialRouteName="PlaySelectRound"
+      initialRouteName="SelectRound"
       screenOptions={{
         headerTitle: outing?.name,
         headerBackTitleVisible: false,
@@ -51,7 +51,8 @@ const PlayNavigator = ({}: Props) => {
             />
           </View>
         ),
-      }}>
+      }}
+    >
       <Stack.Screen name="SelectRound" component={SelectRoundScreen} />
       <Stack.Screen name="SelectGroup" component={SelectGroupScreen} />
       <Stack.Screen name="Scores" component={ScoresScreen} />

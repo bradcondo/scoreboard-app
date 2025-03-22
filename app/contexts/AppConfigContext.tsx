@@ -1,13 +1,13 @@
-import React, {useState, useMemo, useEffect, useContext} from 'react';
-import {Dimensions, AppState, ScaledSize, AppStateStatus} from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {isNil} from 'lodash';
+import React, { useState, useMemo, useEffect, useContext } from "react";
+import { Dimensions, AppState, ScaledSize, AppStateStatus } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { isNil } from "lodash";
 
-import Outing from '@models/Outing';
-import Player from '@models/Player';
-import Api from '@services/Api';
+import Outing from "@/models/Outing";
+import Player from "@/models/Player";
+import Api from "@/services/Api";
 
-type Orientation = 'vertical' | 'horizontal';
+type Orientation = "vertical" | "horizontal";
 
 export interface State {
   player?: Player;
@@ -24,29 +24,29 @@ export const AppConfigContext = React.createContext<State>({
   setPlayer: () => {},
   outings: [],
   setOutings: () => {},
-  orientation: 'vertical',
+  orientation: "vertical",
   windowWidth: 0,
   windowHeight: 0,
 });
 export const AppConfigContextConsumer = AppConfigContext.Consumer;
 
-export const AppConfigContextProvider: React.FC = ({children}) => {
+export const AppConfigContextProvider: React.FC = ({ children }) => {
   const [player, setPlayer] = useState<Player>();
   const [outings, setOutings] = useState<Outing[]>([]);
-  const [orientation, setOrientation] = useState<Orientation>('vertical');
+  const [orientation, setOrientation] = useState<Orientation>("vertical");
   const windowDimensions = useWindowDimensions();
   const appState = useAppState();
 
   // Save player when selected
   useEffect(() => {
     if (!isNil(player)) {
-      AsyncStorage.setItem('emailAddress', player.emailAddress);
+      AsyncStorage.setItem("emailAddress", player.emailAddress);
     }
   }, [player]);
 
   // Load previous selected player
   useEffect(() => {
-    AsyncStorage.getItem('emailAddress').then((emailAddress) => {
+    AsyncStorage.getItem("emailAddress").then((emailAddress) => {
       if (!isNil(emailAddress)) {
         Api.getPlayer(emailAddress).then((foundPlayer) => {
           setPlayer(foundPlayer);
@@ -68,9 +68,9 @@ export const AppConfigContextProvider: React.FC = ({children}) => {
   // Set orientation
   useEffect(() => {
     if (windowDimensions.width > windowDimensions.height) {
-      setOrientation('horizontal');
+      setOrientation("horizontal");
     } else {
-      setOrientation('vertical');
+      setOrientation("vertical");
     }
   }, [windowDimensions]);
 
@@ -106,10 +106,10 @@ export const AppConfigContextProvider: React.FC = ({children}) => {
 };
 
 const useWindowDimensions = (): ScaledSize => {
-  const [dimensions, setDimensions] = useState(Dimensions.get('window'));
+  const [dimensions, setDimensions] = useState(Dimensions.get("window"));
 
   useEffect(() => {
-    const __handleChange = (event: {window: ScaledSize}) => {
+    const __handleChange = (event: { window: ScaledSize }) => {
       if (
         dimensions.width !== event.window.width ||
         dimensions.height !== event.window.height
@@ -118,9 +118,9 @@ const useWindowDimensions = (): ScaledSize => {
       }
     };
 
-    Dimensions.addEventListener('change', __handleChange);
+    Dimensions.addEventListener("change", __handleChange);
     return () => {
-      Dimensions.removeEventListener('change', __handleChange);
+      Dimensions.removeEventListener("change", __handleChange);
     };
   }, [dimensions]);
 
@@ -137,9 +137,9 @@ const useAppState = (): AppStateStatus => {
       }
     };
 
-    AppState.addEventListener('change', __handleChange);
+    AppState.addEventListener("change", __handleChange);
     return () => {
-      AppState.removeEventListener('change', __handleChange);
+      AppState.removeEventListener("change", __handleChange);
     };
   }, [appState]);
 

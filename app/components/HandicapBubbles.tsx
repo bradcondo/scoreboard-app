@@ -1,7 +1,7 @@
-import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import React from "react";
+import { View, StyleSheet } from "react-native";
 
-import colors from '@styles/colors';
+import colors from "@/styles/colors";
 
 export interface Props {
   playerHandicap: number;
@@ -42,12 +42,12 @@ const style = StyleSheet.create({
     borderRadius: 4,
   },
   bubble1: {
-    position: 'absolute',
+    position: "absolute",
     top: 1,
     right: 1,
   },
   bubble2: {
-    position: 'absolute',
+    position: "absolute",
     top: 1,
     right: 7,
   },

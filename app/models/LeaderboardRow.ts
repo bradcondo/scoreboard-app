@@ -1,7 +1,7 @@
-import {get} from 'lodash';
+import { get } from "lodash";
 
-import LeaderboardScore from '@models/LeaderboardScore';
-import Player from '@models/Player';
+import LeaderboardScore from "@/models/LeaderboardScore";
+import Player from "@/models/Player";
 
 class LeaderboardRow {
   constructor(
@@ -19,16 +19,16 @@ class LeaderboardRow {
 
   public static parse(input: object): LeaderboardRow {
     return new LeaderboardRow(
-      Player.parse(get(input, 'player')),
-      get(input, 'handicap'),
-      get(input, 'completed_rounds'),
-      LeaderboardScore.parseList(get(input, 'scores')),
-      get(input, 'score'),
-      get(input, 'to_par'),
-      get(input, 'net_score'),
-      get(input, 'net_to_par'),
-      get(input, 'birdies'),
-      get(input, 'eagles'),
+      Player.parse(get(input, "player")),
+      get(input, "handicap"),
+      get(input, "completed_rounds"),
+      LeaderboardScore.parseList(get(input, "scores")),
+      get(input, "score"),
+      get(input, "to_par"),
+      get(input, "net_score"),
+      get(input, "net_to_par"),
+      get(input, "birdies"),
+      get(input, "eagles"),
     );
   }
 

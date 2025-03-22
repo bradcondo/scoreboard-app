@@ -1,4 +1,4 @@
-import {get, isNil} from 'lodash';
+import { get, isNil } from "lodash";
 
 class Skins {
   constructor(
@@ -10,15 +10,15 @@ class Skins {
   ) {}
 
   public static parse(input: object): Skins {
-    const teeTimeString = get(input, 'tee_time');
+    const teeTimeString = get(input, "tee_time");
     const teeTime = !isNil(teeTimeString) ? new Date(teeTimeString) : undefined;
 
     return new Skins(
-      get(input, 'outing_round_id'),
-      get(input, 'course_id'),
-      get(input, 'course_name'),
+      get(input, "outing_round_id"),
+      get(input, "course_id"),
+      get(input, "course_name"),
       teeTime,
-      Skin.parseList(get(input, 'skins')),
+      Skin.parseList(get(input, "skins")),
     );
   }
 
@@ -43,16 +43,16 @@ export class Skin {
 
   public static parse(input: object): Skin {
     return new Skin(
-      get(input, 'player_id'),
-      get(input, 'player_first_name'),
-      get(input, 'player_last_name'),
-      get(input, 'player_nickname'),
-      get(input, 'hole_number'),
-      get(input, 'hole_par'),
-      get(input, 'score'),
-      get(input, 'to_par'),
-      get(input, 'net_score'),
-      get(input, 'net_to_par'),
+      get(input, "player_id"),
+      get(input, "player_first_name"),
+      get(input, "player_last_name"),
+      get(input, "player_nickname"),
+      get(input, "hole_number"),
+      get(input, "hole_par"),
+      get(input, "score"),
+      get(input, "to_par"),
+      get(input, "net_score"),
+      get(input, "net_to_par"),
     );
   }
 

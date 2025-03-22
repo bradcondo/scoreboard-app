@@ -1,40 +1,40 @@
-import React, {useEffect, useState} from 'react';
-import {Text, View, ScrollView} from 'react-native';
-import {TouchableHighlight} from 'react-native-gesture-handler';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import {RouteProp} from '@react-navigation/native';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {isNil} from 'lodash';
+import React, { useEffect, useState } from "react";
+import { Text, View, ScrollView } from "react-native";
+import { TouchableHighlight } from "react-native-gesture-handler";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import { RouteProp } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { isNil } from "lodash";
 
-import Scorecard from '@models/Scorecard';
-import Api from '@services/Api';
-import {useAppConfig} from '@contexts/AppConfigContext';
-import GroupScorecard from '@components/GroupScorecard';
-import Hole from '@models/ScorecardHole';
-import ToPar from '@components/ToPar';
-import HandicapBubbles from '@components/HandicapBubbles';
-import ScorecardPlayer from '@models/ScorecardPlayer';
-import {StackParamList} from '@navigators/PlayNavigator';
-import OutingRound from '@models/OutingRound';
-import OutingGroup from '@models/OutingGroup';
+import Scorecard from "@/models/Scorecard";
+import Api from "@/services/Api";
+import { useAppConfig } from "@/contexts/AppConfigContext";
+import GroupScorecard from "@/components/GroupScorecard";
+import Hole from "@/models/ScorecardHole";
+import ToPar from "@/components/ToPar";
+import HandicapBubbles from "@/components/HandicapBubbles";
+import ScorecardPlayer from "@/models/ScorecardPlayer";
+import { StackParamList } from "@/navigators/PlayNavigator";
+import OutingRound from "@/models/OutingRound";
+import OutingGroup from "@/models/OutingGroup";
 
-import colors from '@styles/colors';
-import style from './style';
-import {useOuting} from '@contexts/OutingContext';
+import colors from "@/styles/colors";
+import style from "./style";
+import { useOuting } from "@/contexts/OutingContext";
 
-type NavigationType = StackNavigationProp<StackParamList, 'Scores'>;
-type Route = RouteProp<StackParamList, 'Scores'>;
+type NavigationType = StackNavigationProp<StackParamList, "Scores">;
+type Route = RouteProp<StackParamList, "Scores">;
 export interface Props {
   navigation: NavigationType;
   route: Route;
 }
 
-const ScoresScreen: React.FC<Props> = ({route}: Props) => {
+const ScoresScreen: React.FC<Props> = ({ route }: Props) => {
   const outingRound = OutingRound.parse(route.params.outingRound);
   const outingGroup = OutingGroup.parse(route.params.outingGroup);
 
-  const {outing} = useOuting();
-  const {orientation} = useAppConfig();
+  const { outing } = useOuting();
+  const { orientation } = useAppConfig();
   const [scorecard, setScorecard] = useState<Scorecard>();
   const [holeNumber, setHoleNumber] = useState<number>(1);
   const [hole, setHole] = useState<Hole>();
@@ -79,7 +79,7 @@ const ScoresScreen: React.FC<Props> = ({route}: Props) => {
       <Text style={style.header}>
         {outingRound.course.name} @ {outingRound.when()}
       </Text>
-      {orientation === 'vertical' && (
+      {orientation === "vertical" && (
         <>
           <HoleHeader hole={hole} setHoleNumber={setHoleNumberHandler} />
           <ScrollView style={style.scroll}>
@@ -99,7 +99,7 @@ const ScoresScreen: React.FC<Props> = ({route}: Props) => {
           </ScrollView>
         </>
       )}
-      {orientation === 'horizontal' && !isNil(scorecard) && (
+      {orientation === "horizontal" && !isNil(scorecard) && (
         <ScrollView style={style.scroll}>
           <View>
             <GroupScorecard scorecard={scorecard} />
@@ -128,7 +128,7 @@ const HoleHeader = ({
     <View style={style.holeHeader}>
       <View style={style.previousHole}>
         <TouchableHighlight onPress={previousHoleHandler}>
-          <Ionicons name={'chevron-back-circle'} size={36} color={colors.red} />
+          <Ionicons name={"chevron-back-circle"} size={36} color={colors.red} />
         </TouchableHighlight>
       </View>
       <Text style={style.holeHeaderText}>
@@ -140,7 +140,7 @@ const HoleHeader = ({
       <View style={style.nextHole}>
         <TouchableHighlight onPress={nextHoleHandler}>
           <Ionicons
-            name={'chevron-forward-circle'}
+            name={"chevron-forward-circle"}
             size={36}
             color={colors.red}
           />
@@ -152,14 +152,15 @@ const HoleHeader = ({
 
 const HeaderRow = () => {
   return (
-    <View style={{...style.row, ...style.headerRow}}>
+    <View style={{ ...style.row, ...style.headerRow }}>
       <View
         style={{
           ...style.cell,
           ...style.headerCell,
           ...style.cellName,
           ...style.headerCellName,
-        }}>
+        }}
+      >
         <Text style={style.headerRowText}>Player</Text>
       </View>
       <View
@@ -167,21 +168,24 @@ const HeaderRow = () => {
           ...style.cell,
           ...style.headerCell,
           ...style.strokesCell,
-        }}>
+        }}
+      >
         <Text style={style.headerRowText}>Strokes</Text>
       </View>
       <View
         style={{
           ...style.cell,
           ...style.headerCell,
-        }}>
+        }}
+      >
         <Text style={style.headerRowText}>Score</Text>
       </View>
       <View
         style={{
           ...style.cell,
           ...style.headerCell,
-        }}>
+        }}
+      >
         <Text style={style.headerRowText}>Net</Text>
       </View>
     </View>
@@ -223,34 +227,36 @@ const PlayerRow = ({
           ...style.cell,
           ...style.cellName,
           borderBottomWidth,
-        }}>
+        }}
+      >
         <Text
           style={{
             ...style.cellText,
             ...style.nameText,
-          }}>
+          }}
+        >
           {player.nickname}
         </Text>
         <Text style={style.handicap}>{player.handicap}</Text>
       </View>
-      <View style={{...style.cell, ...style.strokesCell}}>
+      <View style={{ ...style.cell, ...style.strokesCell }}>
         {!isNil(score) && (
           <>
             <TouchableHighlight onPress={removeStrokeHandler}>
               <Ionicons
-                name={'remove-circle-outline'}
+                name={"remove-circle-outline"}
                 size={36}
                 color={colors.gray}
               />
             </TouchableHighlight>
-            <Text style={{...style.cellText, ...style.strokesText}}>
+            <Text style={{ ...style.cellText, ...style.strokesText }}>
               {score.score}
             </Text>
           </>
         )}
         <TouchableHighlight onPress={addStrokeHandler}>
           <Ionicons
-            name={isNil(score) ? 'add-circle' : 'add-circle-outline'}
+            name={isNil(score) ? "add-circle" : "add-circle-outline"}
             size={36}
             color={colors.gray}
           />
@@ -277,9 +283,9 @@ const PlayerRow = ({
   );
 };
 
-const TeamRow = ({toPar}: {toPar: number}) => {
+const TeamRow = ({ toPar }: { toPar: number }) => {
   return (
-    <View style={{...style.row, ...style.teamRow}}>
+    <View style={{ ...style.row, ...style.teamRow }}>
       <View
         style={{
           ...style.cell,
@@ -305,7 +311,8 @@ const TeamRow = ({toPar}: {toPar: number}) => {
         style={{
           ...style.cell,
           ...style.teamCell,
-        }}>
+        }}
+      >
         <ToPar toPar={toPar} />
       </View>
     </View>

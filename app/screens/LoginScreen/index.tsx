@@ -1,28 +1,28 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {Text, View} from 'react-native';
-import {TextInput, TouchableHighlight} from 'react-native-gesture-handler';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {isNil} from 'lodash';
+import React, { useEffect, useRef, useState } from "react";
+import { Text, View } from "react-native";
+import { TextInput, TouchableHighlight } from "react-native-gesture-handler";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { isNil } from "lodash";
 
-import {useAppConfig} from '@contexts/AppConfigContext';
-import Api from '@services/Api';
-import {StackParamList} from '@navigators/AppNavigator';
+import { useAppConfig } from "@/contexts/AppConfigContext";
+import Api from "@/services/Api";
+import { StackParamList } from "@/navigators/AppNavigator";
 
-import style from './style';
+import style from "./style";
 
-type NavigationType = StackNavigationProp<StackParamList, 'Login'>;
+type NavigationType = StackNavigationProp<StackParamList, "Login">;
 export interface Props {
   navigation: NavigationType;
 }
 
-const LoginScreen: React.FC<Props> = ({navigation}: Props) => {
-  const {player, setPlayer} = useAppConfig();
+const LoginScreen: React.FC<Props> = ({ navigation }: Props) => {
+  const { player, setPlayer } = useAppConfig();
   const emailAddress = useRef<string>();
   const [error, setError] = useState<string>();
 
   useEffect(() => {
     if (!isNil(player)) {
-      navigation.navigate('SelectOuting');
+      navigation.navigate("SelectOuting");
     }
   }, [navigation, player]);
 

@@ -1,24 +1,24 @@
-import React, {useEffect, useState} from 'react';
-import {Text, View, ScrollView} from 'react-native';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {isNil} from 'lodash';
+import React, { useEffect, useState } from "react";
+import { Text, View, ScrollView } from "react-native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { isNil } from "lodash";
 
-import Api from '@services/Api';
-import {useOuting} from '@contexts/OutingContext';
-import Skins from '@models/Skins';
-import ToPar from '@components/ToPar';
-import {StackParamList} from '@navigators/SkinsNavigator';
+import Api from "@/services/Api";
+import { useOuting } from "@/contexts/OutingContext";
+import Skins from "@/models/Skins";
+import ToPar from "@/components/ToPar";
+import { StackParamList } from "@/navigators/SkinsNavigator";
 
-import layout from '@styles/layout';
-import style from './style';
+import layout from "@/styles/layout";
+import style from "./style";
 
-type NavigationType = StackNavigationProp<StackParamList, 'Skins'>;
+type NavigationType = StackNavigationProp<StackParamList, "Skins">;
 export interface Props {
   navigation: NavigationType;
 }
 
 const SkinsScreen = ({}: Props) => {
-  const {outing} = useOuting();
+  const { outing } = useOuting();
   const [skins, setSkins] = useState<Skins[]>([]);
 
   useEffect(() => {
@@ -30,68 +30,75 @@ const SkinsScreen = ({}: Props) => {
   }, [outing]);
 
   return (
-    <View style={{...layout.container, ...style.container}}>
+    <View style={{ ...layout.container, ...style.container }}>
       <ScrollView>
         {skins.map((roundSkins) => {
           return (
             <View key={`round-${roundSkins.outingRoundId}`}>
               <Text style={style.header}>
-                {roundSkins.courseName} -{' '}
+                {roundSkins.courseName} -{" "}
                 {!isNil(roundSkins.teeTime)
                   ? roundSkins.teeTime.toLocaleDateString()
-                  : null}{' '}
+                  : null}{" "}
                 - ({roundSkins.skins.length})
               </Text>
               <View style={style.table}>
-                <View style={{...style.row, ...style.headerRow}}>
+                <View style={{ ...style.row, ...style.headerRow }}>
                   <View
                     style={{
                       ...style.cell,
                       ...style.headerCell,
                       ...style.cellName,
                       ...style.headerCellName,
-                    }}>
+                    }}
+                  >
                     <Text style={style.headerRowText}>Player</Text>
                   </View>
                   <View
                     style={{
                       ...style.cell,
                       ...style.headerCell,
-                    }}>
+                    }}
+                  >
                     <Text style={style.headerRowText}>Hole</Text>
                   </View>
                   <View
                     style={{
                       ...style.cell,
                       ...style.headerCell,
-                    }}>
+                    }}
+                  >
                     <Text style={style.headerRowText}>Par</Text>
                   </View>
                   <View
                     style={{
                       ...style.cell,
                       ...style.headerCell,
-                    }}>
+                    }}
+                  >
                     <Text style={style.headerRowText}>Score</Text>
                   </View>
                   <View
                     style={{
                       ...style.cell,
                       ...style.headerCell,
-                    }}>
+                    }}
+                  >
                     <Text style={style.headerRowText}>Net</Text>
                   </View>
                 </View>
                 {roundSkins.skins.map((skin, index) => (
                   <View
                     key={`round-${roundSkins.outingRoundId}-${index}`}
-                    style={style.row}>
-                    <View style={{...style.cell, ...style.cellName}}>
+                    style={style.row}
+                  >
+                    <View style={{ ...style.cell, ...style.cellName }}>
                       <Text
                         style={{
                           ...style.cellText,
                           ...style.nameText,
-                        }}>
+                        }}
+                      >
                         {skin.playerNickname}
                       </Text>
                     </View>

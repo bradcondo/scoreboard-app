@@ -1,6 +1,6 @@
-import {get} from 'lodash';
+import { get } from "lodash";
 
-import ScorecardScore from '@models/ScorecardScore';
+import ScorecardScore from "@/models/ScorecardScore";
 
 class ScorecardRound {
   constructor(
@@ -18,16 +18,16 @@ class ScorecardRound {
 
   public static parse(input: object): ScorecardRound {
     return new ScorecardRound(
-      get(input, 'id'),
-      ScorecardScore.parseList(get(input, 'scores', [])),
-      get(input, 'score'),
-      get(input, 'to_par'),
-      get(input, 'net_score'),
-      get(input, 'net_to_par'),
-      get(input, 'front_score'),
-      get(input, 'front_to_par'),
-      get(input, 'back_score'),
-      get(input, 'back_to_par'),
+      get(input, "id"),
+      ScorecardScore.parseList(get(input, "scores", [])),
+      get(input, "score"),
+      get(input, "to_par"),
+      get(input, "net_score"),
+      get(input, "net_to_par"),
+      get(input, "front_score"),
+      get(input, "front_to_par"),
+      get(input, "back_score"),
+      get(input, "back_to_par"),
     );
   }
 

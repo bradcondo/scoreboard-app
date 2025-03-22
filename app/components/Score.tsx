@@ -1,14 +1,15 @@
-import React from 'react';
-import {StyleSheet, Text, View, Platform} from 'react-native';
-import colors from '@styles/colors';
-import {isNil} from 'lodash';
+import React from "react";
+import { StyleSheet, Text, View, Platform } from "react-native";
+import { isNil } from "lodash";
+
+import colors from "@/styles/colors";
 
 export interface Props {
   score: number | undefined;
   par: number | undefined;
 }
 
-const Score: React.FC<Props> = ({score, par}: Props) => {
+const Score: React.FC<Props> = ({ score, par }: Props) => {
   if (isNil(score) || isNil(par)) {
     return null;
   }
@@ -54,13 +55,13 @@ const style = StyleSheet.create({
   score: {
     width: 14,
     height: 14,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   scoreText: {
-    fontSize: Platform.OS === 'android' ? 10 : 11,
-    lineHeight: Platform.OS === 'android' ? 12 : 14,
-    fontWeight: '400',
+    fontSize: Platform.OS === "android" ? 10 : 11,
+    lineHeight: Platform.OS === "android" ? 12 : 14,
+    fontWeight: "400",
   },
   eagle: {
     borderWidth: 1,

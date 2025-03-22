@@ -1,6 +1,6 @@
-import {get} from 'lodash';
+import { get } from "lodash";
 
-import ScorecardRound from '@models/ScorecardRound';
+import ScorecardRound from "@/models/ScorecardRound";
 
 class ScorecardPlayer {
   constructor(
@@ -14,12 +14,12 @@ class ScorecardPlayer {
 
   public static parse(input: object): ScorecardPlayer {
     return new ScorecardPlayer(
-      get(input, 'id'),
-      get(input, 'first_name'),
-      get(input, 'last_name'),
-      get(input, 'nickname'),
-      get(input, 'handicap'),
-      ScorecardRound.parse(get(input, 'round', {})),
+      get(input, "id"),
+      get(input, "first_name"),
+      get(input, "last_name"),
+      get(input, "nickname"),
+      get(input, "handicap"),
+      ScorecardRound.parse(get(input, "round", {})),
     );
   }
 

@@ -1,4 +1,4 @@
-import {get} from 'lodash';
+import { get } from "lodash";
 
 class ScorecardScore {
   constructor(
@@ -12,12 +12,12 @@ class ScorecardScore {
 
   public static parse(input: object): ScorecardScore {
     return new ScorecardScore(
-      get(input, 'id'),
-      get(input, 'hole_id'),
-      get(input, 'score'),
-      get(input, 'to_par'),
-      get(input, 'net_score'),
-      get(input, 'net_to_par'),
+      get(input, "id"),
+      get(input, "hole_id"),
+      get(input, "score"),
+      get(input, "to_par"),
+      get(input, "net_score"),
+      get(input, "net_to_par"),
     );
   }
 

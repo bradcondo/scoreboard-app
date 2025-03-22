@@ -1,6 +1,6 @@
-import {get} from 'lodash';
+import { get } from "lodash";
 
-import Player from '@models/Player';
+import Player from "@/models/Player";
 
 class OutingPlayer {
   constructor(
@@ -14,12 +14,12 @@ class OutingPlayer {
 
   public static parse(input: object): OutingPlayer {
     return new OutingPlayer(
-      get(input, 'id'),
-      get(input, 'outing_id'),
-      get(input, 'player_id'),
-      Player.parse(get(input, 'player')),
-      get(input, 'admin'),
-      get(input, 'handicap'),
+      get(input, "id"),
+      get(input, "outing_id"),
+      get(input, "player_id"),
+      Player.parse(get(input, "player")),
+      get(input, "admin"),
+      get(input, "handicap"),
     );
   }
 

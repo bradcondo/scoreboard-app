@@ -1,4 +1,4 @@
-import {get} from 'lodash';
+import { get } from "lodash";
 
 class Outing {
   constructor(
@@ -9,9 +9,9 @@ class Outing {
 
   public static parse(input: object): Outing {
     return new Outing(
-      get(input, 'id'),
-      get(input, 'name'),
-      get(input, 'groupSize'),
+      get(input, "id"),
+      get(input, "name"),
+      get(input, "groupSize"),
     );
   }
 

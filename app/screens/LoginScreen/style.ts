@@ -1,9 +1,10 @@
-import colors from '@styles/colors';
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from "react-native";
+
+import colors from "@/styles/colors";
 
 const style = StyleSheet.create({
-  container: {flex: 1, alignItems: 'center', justifyContent: 'center'},
-  header: {fontSize: 14, fontWeight: '300'},
+  container: { flex: 1, alignItems: "center", justifyContent: "center" },
+  header: { fontSize: 14, fontWeight: "300" },
   input: {
     width: 200,
     margin: 12,
@@ -11,7 +12,7 @@ const style = StyleSheet.create({
     borderColor: colors.gray,
     borderRadius: 4,
     backgroundColor: colors.lightGray,
-    textAlign: 'center',
+    textAlign: "center",
     padding: 12,
     paddingTop: 6,
     paddingBottom: 6,
@@ -23,8 +24,8 @@ const style = StyleSheet.create({
     paddingTop: 6,
     paddingBottom: 6,
   },
-  buttonText: {color: colors.white, fontSize: 12, fontWeight: 'bold'},
-  error: {color: colors.red, fontWeight: 'bold', marginTop: 30},
+  buttonText: { color: colors.white, fontSize: 12, fontWeight: "bold" },
+  error: { color: colors.red, fontWeight: "bold", marginTop: 30 },
 });
 
 export default style;

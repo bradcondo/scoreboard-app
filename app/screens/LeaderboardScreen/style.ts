@@ -1,9 +1,10 @@
-import {StyleSheet} from 'react-native';
-import colors from '@styles/colors';
+import { StyleSheet } from "react-native";
+
+import colors from "@/styles/colors";
 
 const style = StyleSheet.create({
   container: {
-    flexDirection: 'column',
+    flexDirection: "column",
   },
   table: {
     margin: 5,
@@ -17,7 +18,7 @@ const style = StyleSheet.create({
     borderBottomColor: colors.darkGray,
     backgroundColor: colors.white,
     height: 54,
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   headerRow: {
     backgroundColor: colors.darkRed,
@@ -26,38 +27,38 @@ const style = StyleSheet.create({
     borderTopRightRadius: 5,
   },
   headerRowText: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     color: colors.white,
   },
   cell: {
     borderRightWidth: 1,
     borderRightColor: colors.lightGray,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     height: 54,
-    position: 'relative',
-    flexDirection: 'column',
+    position: "relative",
+    flexDirection: "column",
   },
   cellTop: {
-    width: '100%',
+    width: "100%",
     height: 27,
     borderBottomWidth: 1,
     borderBottomColor: colors.lightGray,
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'relative',
-    flexDirection: 'row',
+    justifyContent: "center",
+    alignItems: "center",
+    position: "relative",
+    flexDirection: "row",
   },
   cellTopTotal: {
     borderBottomColor: colors.gray,
   },
   cellBottom: {
-    width: '100%',
+    width: "100%",
     height: 27,
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'relative',
-    flexDirection: 'row',
+    justifyContent: "center",
+    alignItems: "center",
+    position: "relative",
+    flexDirection: "row",
     borderBottomWidth: 1,
     borderBottomColor: colors.darkGray,
   },
@@ -76,7 +77,7 @@ const style = StyleSheet.create({
   },
   highlightText: {
     color: colors.black,
-    fontWeight: '700',
+    fontWeight: "700",
   },
   cellPosition: {
     width: 22,
@@ -111,18 +112,18 @@ const style = StyleSheet.create({
     borderLeftColor: colors.black,
   },
   position: {
-    position: 'absolute',
+    position: "absolute",
     top: 2,
     left: 3,
     color: colors.darkGray,
     fontSize: 8,
   },
   handicap: {
-    position: 'absolute',
+    position: "absolute",
     top: 2,
     right: 3,
     fontSize: 9,
-    fontWeight: '400',
+    fontWeight: "400",
     color: colors.darkGray,
   },
 });

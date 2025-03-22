@@ -1,15 +1,16 @@
-import {StyleSheet} from 'react-native';
-import colors from '@styles/colors';
+import { StyleSheet } from "react-native";
+
+import colors from "@/styles/colors";
 
 const style = StyleSheet.create({
   container: {
-    flexDirection: 'column',
+    flexDirection: "column",
     paddingTop: 20,
   },
   header: {
     fontSize: 16,
-    fontWeight: 'bold',
-    textAlign: 'center',
+    fontWeight: "bold",
+    textAlign: "center",
   },
   table: {
     margin: 5,
@@ -24,7 +25,7 @@ const style = StyleSheet.create({
     borderBottomColor: colors.lightGray,
     backgroundColor: colors.white,
     height: 35,
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   headerRow: {
     backgroundColor: colors.darkRed,
@@ -33,7 +34,7 @@ const style = StyleSheet.create({
     borderTopRightRadius: 5,
   },
   headerRowText: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     color: colors.white,
   },
   cell: {
@@ -41,10 +42,10 @@ const style = StyleSheet.create({
     borderRightColor: colors.lightGray,
     width: 50,
     height: 35,
-    position: 'relative',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+    position: "relative",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
   },
   headerCell: {
     height: 30,
@@ -54,7 +55,7 @@ const style = StyleSheet.create({
   cellText: {
     fontSize: 12,
     color: colors.black,
-    fontWeight: '700',
+    fontWeight: "700",
   },
   nameText: {
     fontSize: 14,
@@ -67,7 +68,7 @@ const style = StyleSheet.create({
     borderBottomColor: colors.gray,
     borderRightWidth: 1,
     borderRightColor: colors.gray,
-    justifyContent: 'flex-start',
+    justifyContent: "flex-start",
     paddingLeft: 10,
   },
   headerCellName: {

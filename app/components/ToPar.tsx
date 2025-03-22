@@ -1,8 +1,8 @@
-import React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
-import {isNil} from 'lodash';
+import React from "react";
+import { Text, View, StyleSheet } from "react-native";
+import { isNil } from "lodash";
 
-import colors from '@styles/colors';
+import colors from "@/styles/colors";
 
 const ToPar = ({
   toPar,
@@ -20,14 +20,14 @@ const ToPar = ({
   const color = gray
     ? colors.gray
     : toPar > 0
-    ? colors.darkRed
-    : toPar < 0
-    ? colors.green
-    : colors.gray;
+      ? colors.darkRed
+      : toPar < 0
+        ? colors.green
+        : colors.gray;
 
   return (
-    <View style={{...style.container, backgroundColor: color, marginLeft}}>
-      <Text style={style.text}>{toPar === 0 ? 'E' : toPar}</Text>
+    <View style={{ ...style.container, backgroundColor: color, marginLeft }}>
+      <Text style={style.text}>{toPar === 0 ? "E" : toPar}</Text>
     </View>
   );
 };
@@ -41,7 +41,7 @@ const style = StyleSheet.create({
   },
   text: {
     fontSize: 10,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     color: colors.white,
   },
 });

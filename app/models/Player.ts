@@ -1,4 +1,4 @@
-import {get} from 'lodash';
+import { get } from "lodash";
 
 class Player {
   constructor(
@@ -13,13 +13,13 @@ class Player {
 
   public static parse(input: object): Player {
     return new Player(
-      get(input, 'id'),
-      get(input, 'first_name'),
-      get(input, 'last_name'),
-      get(input, 'nickname'),
-      get(input, 'email_address'),
-      get(input, 'phone_number'),
-      get(input, 'handicap'),
+      get(input, "id"),
+      get(input, "first_name"),
+      get(input, "last_name"),
+      get(input, "nickname"),
+      get(input, "email_address"),
+      get(input, "phone_number"),
+      get(input, "handicap"),
     );
   }
 

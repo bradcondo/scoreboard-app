@@ -1,24 +1,24 @@
-import React from 'react';
-import {Text, TouchableHighlight, View} from 'react-native';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {isNil} from 'lodash';
+import React from "react";
+import { Text, TouchableHighlight, View } from "react-native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { isNil } from "lodash";
 
-import {useOuting} from '@contexts/OutingContext';
-import OutingRound from '@models/OutingRound';
-import {StackParamList} from '@navigators/RoundsNavigator';
+import { useOuting } from "@/contexts/OutingContext";
+import OutingRound from "@/models/OutingRound";
+import { StackParamList } from "@/navigators/RoundsNavigator";
 
-import style from './style';
+import style from "./style";
 
-type NavigationType = StackNavigationProp<StackParamList, 'SelectRound'>;
+type NavigationType = StackNavigationProp<StackParamList, "SelectRound">;
 export interface Props {
   navigation: NavigationType;
 }
 
-const SelectRoundScreen: React.FC<Props> = ({navigation}: Props) => {
-  const {outingRounds} = useOuting();
+const SelectRoundScreen: React.FC<Props> = ({ navigation }: Props) => {
+  const { outingRounds } = useOuting();
 
   const selectRoundHandler = (selectedOutingRound: OutingRound) => {
-    navigation.navigate('Scorecards', {
+    navigation.navigate("Scorecards", {
       outingRound: selectedOutingRound.dump(),
     });
   };
@@ -32,7 +32,8 @@ const SelectRoundScreen: React.FC<Props> = ({navigation}: Props) => {
           <TouchableHighlight
             key={`outing-${x.id}`}
             style={style.button}
-            onPress={() => selectRoundHandler(x)}>
+            onPress={() => selectRoundHandler(x)}
+          >
             <Text style={style.buttonText}>
               {x.course.name} @ {!isNil(x.teeTime) ? x.when() : null}
             </Text>
