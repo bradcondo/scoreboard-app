@@ -18,7 +18,8 @@ const SkinsNavigator = () => {
   return (
     <SkinsStack.Navigator
       screenOptions={{
-        headerBackTitleVisible: false,
+        headerStatusBarHeight: 0,
+        headerBackButtonDisplayMode: "minimal",
         headerTitle: outing?.name,
         headerRight: () => (
           <View style={layout.headerRight}>

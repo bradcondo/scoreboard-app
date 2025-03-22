@@ -19,16 +19,14 @@ const AppNavigator = () => {
   return (
     <AppStack.Navigator
       initialRouteName="Login"
-      screenOptions={{ headerBackTitleVisible: false }}
+      screenOptions={{
+        headerShown: false,
+      }}
     >
       <AppStack.Screen name="Login" component={LoginScreen} />
       <AppStack.Screen name="Logout" component={LogoutScreen} />
       <AppStack.Screen name="SelectOuting" component={SelectOutingScreen} />
-      <AppStack.Screen
-        name="Outing"
-        component={OutingNavigator}
-        options={{ headerShown: false }}
-      />
+      <AppStack.Screen name="Outing" component={OutingNavigator} />
     </AppStack.Navigator>
   );
 };

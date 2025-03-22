@@ -22,6 +22,15 @@ const OutingNavigator = ({}: Props) => {
   return (
     <AppTabs.Navigator
       screenOptions={({ route }) => ({
+        headerStatusBarHeight: 0,
+        headerShown: false,
+        tabBarActiveTintColor: colors.red,
+        tabBarInactiveTintColor: "gray",
+        tabBarStyle: {
+          height: 55,
+          margin: 0,
+          padding: 0,
+        },
         tabBarIcon: ({ color, size }) => {
           var icon = "alert-circle-outline";
           if (route.name === "Leaderboard") {
@@ -37,10 +46,6 @@ const OutingNavigator = ({}: Props) => {
           return <Ionicons name={icon} size={size} color={color} />;
         },
       })}
-      tabBarOptions={{
-        activeTintColor: colors.red,
-        inactiveTintColor: "gray",
-      }}
     >
       <AppTabs.Screen name="Leaderboard" component={LeaderboardNavigator} />
       <AppTabs.Screen name="Skins" component={SkinsNavigator} />

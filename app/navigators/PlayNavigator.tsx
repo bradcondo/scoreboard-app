@@ -39,8 +39,9 @@ const PlayNavigator = ({}: Props) => {
     <Stack.Navigator
       initialRouteName="SelectRound"
       screenOptions={{
+        headerStatusBarHeight: 0,
         headerTitle: outing?.name,
-        headerBackTitleVisible: false,
+        headerBackButtonDisplayMode: "minimal",
         headerRight: () => (
           <View style={layout.headerRight}>
             <Ionicons

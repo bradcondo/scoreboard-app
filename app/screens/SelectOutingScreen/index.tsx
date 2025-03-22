@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { ScrollView, Text, View } from "react-native";
+import { Button, ScrollView, Text, View } from "react-native";
 import { TouchableHighlight } from "react-native-gesture-handler";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { isNil } from "lodash";
@@ -34,6 +34,10 @@ const SelectOutingScreen: React.FC<Props> = ({ navigation }: Props) => {
     }
   };
 
+  const logout = () => {
+    navigation.navigate("Logout");
+  };
+
   return (
     <View style={style.container}>
       <Text style={style.header}>Select Outing</Text>
@@ -51,6 +55,8 @@ const SelectOutingScreen: React.FC<Props> = ({ navigation }: Props) => {
           );
         })}
       </ScrollView>
+
+      <Button title="Logout" onPress={logout} />
     </View>
   );
 };

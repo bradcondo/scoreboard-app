@@ -18,8 +18,14 @@ const Navigator = () => {
   return (
     <Stack.Navigator
       screenOptions={{
+        headerStatusBarHeight: 0,
+        headerTransparent: false,
+        headerStyle: {
+          padding: 0,
+        },
         headerTitle: outing?.name,
-        headerBackTitleVisible: false,
+        headerBackButtonDisplayMode: "minimal",
+        headerMode: "screen",
         headerRight: () => (
           <View style={layout.headerRight}>
             <Ionicons

@@ -12,13 +12,11 @@ import layout from "@/styles/layout";
 
 const Index = () => {
   return (
-    <SafeAreaView style={layout.container}>
-      <AppConfigContextProvider>
-        <OutingContextProvider>
-          <AppNavigator />
-        </OutingContextProvider>
-      </AppConfigContextProvider>
-    </SafeAreaView>
+    <AppConfigContextProvider>
+      <OutingContextProvider>
+        <AppNavigator />
+      </OutingContextProvider>
+    </AppConfigContextProvider>
   );
 };
 
